@@ -10,11 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #f5f7fa;
       color: #222;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
     header {
@@ -50,13 +61,29 @@
       padding: 20px;
       border-radius: 12px;
       max-width: 300px;
-      margin: auto;
+      width: 100%;
+      margin: 0 auto;
       box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
 
-    .product-card img {
+    /* Contenedor de la imagen: fuerza un marco cuadrado
+       y muestra la imagen ENTERA dentro, sin recortarla,
+       tanto en móvil como en PC. */
+    .product-image {
       width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #f5f7fa;
       border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* cambia a "cover" si prefieres que llene el marco recortando bordes */
     }
 
     .contact {
@@ -66,7 +93,8 @@
 
     form {
       max-width: 400px;
-      margin: auto;
+      width: 100%;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -77,6 +105,7 @@
       border-radius: 6px;
       border: 1px solid #ccc;
       font-family: inherit;
+      width: 100%;
     }
 
     button {
@@ -109,6 +138,16 @@
       font-weight: bold;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
+
+    @media (max-width: 480px) {
+      .whatsapp {
+        padding: 12px 14px;
+        font-size: 14px;
+      }
+      .hero {
+        padding: 40px 16px;
+      }
+    }
   </style>
 </head>
 
@@ -130,7 +169,9 @@
   <h2>Nuestro producto</h2>
 
   <div class="product-card">
-    <img src="https://raw.githubusercontent.com/tarjetasly-ux/Taply/main/Taply.png" alt="Tarjeta NFC">
+    <div class="product-image">
+      <img src="https://raw.githubusercontent.com/tarjetasly-ux/Taply/main/Taply.png" alt="Tarjeta NFC">
+    </div>
     <h3>Tarjeta NFC Taply</h3>
     <p>Personalizable para tu negocio. Compatible con todos los móviles.</p>
     <p><strong>Desde 25,00€</strong></p>
